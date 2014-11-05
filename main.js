@@ -45,6 +45,14 @@ function init()
         {
             cameraz += 0.1;
         }
+        if (deltax > 0)
+        {
+          camera.rotation.y -= deltax/1000;
+        }
+        else if (deltax < 0)
+        {
+          camera.rotation.y += -deltax/1000;
+        }
         camera.position.set(camerax, cameray, cameraz);
     }, 0);
 
@@ -53,7 +61,7 @@ function init()
 
 function initCamera()
 {
-  camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 10);
+  camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 1000);
   camera.position.set(0, 3.5, 5);
   camera.lookAt(scene.position);
   scene.add(camera);
