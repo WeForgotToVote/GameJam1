@@ -1,4 +1,3 @@
-=======
 GameJam1
 ========
 
@@ -11,4 +10,3 @@ I accidentally the whole thing
 * Maxwell Perlman
 * Christian Manuel
 * Tim Bujnevicie
->>>>>>> origin/master
