@@ -18,6 +18,7 @@ function init()
   initCube();
   initCamera();
   initRenderer();
+  generateLevel();
 
     setInterval(function()
     {
@@ -45,9 +46,10 @@ function init()
 
 function initCamera()
 {
-  camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 10);
+  camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 1000);
   camera.position.set(0, 3.5, 5);
-  camera.lookAt(scene.position);
+  camera.rotation.set(0,0,0);
+  //camera.lookAt(scene.position);
 };
 
 function initRenderer()
@@ -72,6 +74,35 @@ function rotateCube()
 function render()
 {
   requestAnimationFrame(render);
-  rotateCube();
+  rotateCube(); 
   renderer.render(scene, camera);
 };
+
+
+function generateLevel()
+{
+  // load a texture, set wrap mode to repeat
+   var texture = THREE.ImageUtils.loadTexture( "./textures/moriarty.jpg" );
+texture.wrapS = THREE.RepeatWrapping;
+texture.wrapT = THREE.RepeatWrapping;
+texture.repeat.set( 1.4, 1.4 );
+
+
+  floor = new THREE.Mesh(new THREE.CubeGeometry(30,1,1000), new THREE.MeshBasicMaterial({color: 'blue'}));
+  floor.position.set(0,-2,-480);
+  scene.add(floor);
+  leftWall = new THREE.Mesh(new THREE.CubeGeometry(1,10,1000), new THREE.MeshBasicMaterial({map : texture}));
+  leftWall.position.set(-15,-2,-480);
+  //leftWall.material.map = getImage('textures/moriarty.jpg');
+  scene.add(leftWall);
+  rightWall = new THREE.Mesh(new THREE.CubeGeometry(1,10,1000), new THREE.MeshBasicMaterial({color: 'red'}));
+  rightWall.position.set(15,-2,-480);
+  scene.add(rightWall); 
+}
+
+function getImage(path)
+{
+  var image = new Image();
+  image.src = path;
+  return image;
+}

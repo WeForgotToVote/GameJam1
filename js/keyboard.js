@@ -114,7 +114,7 @@ window.addEventListener('keyup', function(event)
 			break;
 	/*A*/
 		case 65:
-			console.log("Pressed A");
+			//console.log("Pressed A");
 			keyPressed["A"] = false;
 			break;
 	/*Left*/
@@ -134,7 +134,7 @@ window.addEventListener('keyup', function(event)
 			break;
 	/*D*/
 		case 68:
-			console.log("Pressed D");
+			//console.log("Pressed D");
 			keyPressed["D"] = false;
 			break;
 	/*Right*/
