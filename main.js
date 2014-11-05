@@ -22,24 +22,21 @@ function init()
     setInterval(function(){
         // W
         if (keyPressed == 87) {
-            cameray += 0.1;
-            camera.position.set(camerax, cameray, cameraz);
+            cameraz -= 0.1;
         }
         // A
         if (keyPressed == 65) {
             camerax -= 0.1;
-            camera.position.set(camerax, cameray, cameraz);
         }
         // D
         if (keyPressed == 83) {
-            cameray -= 0.1;
-            camera.position.set(camerax, cameray, cameraz);
+            cameraz += 0.1;
         }
         // S
         if (keyPressed == 68) {
             camerax += 0.1;
-            camera.position.set(camerax, cameray, cameraz);
         }
+        camera.position.set(camerax, cameray, cameraz);
     }, 0);
 
 	document.body.appendChild(renderer.domElement);
