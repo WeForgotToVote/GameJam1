@@ -1,6 +1,8 @@
+var keyPressed;
 window.addEventListener('keydown', function(event)
 {
 	console.log("Pressed " + event.keyCode);
+	keyPressed = event.keyCode;
 	switch (event.keyCode)
 	{
 	/*Spacebar*/
@@ -56,4 +58,10 @@ window.addEventListener('keydown', function(event)
 			console.log("Pressed Right");
 			break;
 	}
+}, false);
+
+window.addEventListener('keyup', function(event)
+{
+	console.log("Pressed " + event.keyCode);
+	keyPressed = "";
 }, false);

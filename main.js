@@ -1,5 +1,11 @@
 var world, mass, body, shape, timeStep=1/60,
 camera, scene, renderer, geometry, material, mesh;
+var camerax = 0;
+var cameray = 3.5;
+var cameraz = 5;
+
+var WIDTH  = window.innerWidth;
+var HEIGHT = window.innerHeight;
 
 var SPEED = 0.01;
 
@@ -14,6 +20,39 @@ groundBody.addShape(groundShape);
 initThree();
 initCannon();
 animate();
+
+    setInterval(function(){
+        // W
+        if (keyPressed == 87) {
+            cameray += 0.1;
+            camera.position.set(camerax, cameray, cameraz);
+        }
+        // A
+        if (keyPressed == 65) {
+            camerax -= 0.1;
+            camera.position.set(camerax, cameray, cameraz);
+        }
+        // D
+        if (keyPressed == 83) {
+            cameray -= 0.1;
+            camera.position.set(camerax, cameray, cameraz);
+        }
+        // S
+        if (keyPressed == 68) {
+            camerax += 0.1;
+            camera.position.set(camerax, cameray, cameraz);
+        }
+    }, 0);
+
+	document.body.appendChild(renderer.domElement);
+};
+
+function initCamera()
+{
+	camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 10);
+	camera.position.set(0, 3.5, 5);
+	camera.lookAt(scene.position);
+};
 
 function initCannon() {
   world = new CANNON.World();
@@ -34,8 +73,6 @@ function initCannon() {
 }
 function initThree() {
   scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 100 );
-  camera.position.z = 5;
   scene.add( camera );
   geometry = new THREE.CubeGeometry( 2, 2, 2 );
   material = new THREE.MeshNormalMaterial();
