@@ -1,4 +1,7 @@
 var scene, camera, renderer;
+var camerax = 0;
+var cameray = 3.5;
+var cameraz = 5;
 
 var WIDTH  = window.innerWidth;
 var HEIGHT = window.innerHeight;
@@ -15,6 +18,29 @@ function init()
 	initCube();
 	initCamera();
 	initRenderer();
+
+    setInterval(function(){
+        // W
+        if (keyPressed == 87) {
+            cameray += 0.1;
+            camera.position.set(camerax, cameray, cameraz);
+        }
+        // A
+        if (keyPressed == 65) {
+            camerax -= 0.1;
+            camera.position.set(camerax, cameray, cameraz);
+        }
+        // D
+        if (keyPressed == 83) {
+            cameray -= 0.1;
+            camera.position.set(camerax, cameray, cameraz);
+        }
+        // S
+        if (keyPressed == 68) {
+            camerax += 0.1;
+            camera.position.set(camerax, cameray, cameraz);
+        }
+    }, 0);
 
 	document.body.appendChild(renderer.domElement);
 };
